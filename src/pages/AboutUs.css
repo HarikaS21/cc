@@ -1,0 +1,88 @@
+/* Container */
+.aboutus-container {
+  padding-top: 6rem;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #0a0014, #1a0033, #000000);
+  color: white;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .aboutus-container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* Hero Section */
+.aboutus-hero {
+  background: linear-gradient(to right, #2b003f, #3e005c, #a86ac5);
+  padding: 5rem 1.5rem;
+  text-align: center;
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+  box-shadow: 0 0 25px #a86ac5aa;
+}
+
+.aboutus-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.aboutus-highlight {
+  color: #a86ac5;
+}
+
+.aboutus-description {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 48rem;
+  margin: 0 auto;
+  font-size: 1.125rem;
+}
+
+@media (min-width: 768px) {
+  .aboutus-title {
+    font-size: 3rem;
+  }
+
+  .aboutus-description {
+    font-size: 1.25rem;
+  }
+}
+
+/* Features Section */
+.aboutus-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 4rem 1.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .aboutus-features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature-card {
+  background: rgba(26, 0, 51, 0.7);
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 20px #a86ac5aa;
+  text-align: center;
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #a86ac5;
+}
+
+.feature-text {
+  color: rgba(255, 255, 255, 0.9);
+}

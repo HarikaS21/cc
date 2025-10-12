@@ -1,0 +1,210 @@
+.security-section {
+  position: relative;
+  padding: 6rem 1.5rem;
+  background: linear-gradient(to bottom right, #1a0028, #000);
+  color: #fff;
+  overflow: hidden;
+}
+
+.glow-background {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  animation: pulse-slow 6s infinite alternate;
+  z-index: -10;
+}
+
+@keyframes pulse-slow {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.6; }
+}
+
+.security-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.security-heading {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.security-heading h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #8b5cf6;
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+  margin-bottom: 1rem;
+}
+
+.security-heading p {
+  color: #d1d5db;
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.security-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+@media(min-width:1024px) {
+  .security-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+
+/* Features Left */
+.features-left {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media(min-width:1024px) {
+  .features-left {
+    width: 50%;
+  }
+}
+
+.feature-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+  transition: all 0.7s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-0.75rem);
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4);
+}
+
+.feature-orb {
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5rem;
+  height: 5rem;
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 50%;
+  filter: blur(1.5rem);
+  transition: all 0.5s ease;
+}
+
+.feature-card:hover .feature-orb {
+  background: rgba(139, 92, 246, 0.4);
+}
+
+.feature-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: #8b5cf6;
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+  transition: all 0.5s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.feature-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #8b5cf6;
+  margin-top: 1rem;
+}
+
+.feature-content p {
+  color: #d1d5db;
+  margin-top: 0.5rem;
+}
+
+/* Image Right */
+.image-right {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  margin-left: 20%; /* slightly moved right */
+}
+
+.image-right img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 1.2rem;
+  position: relative;
+  z-index: 1;
+  display: block;
+  animation: zoomInOut 6s ease-in-out infinite; /* slow zoom */
+}
+
+/* Sparkling Neon Border */
+.image-right::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 1.25rem;
+  background: conic-gradient(
+    from 0deg,
+    #8b5cf6 0%,
+    #c084fc 25%,
+    #8b5cf6 50%,
+    #c084fc 75%,
+    #8b5cf6 100%
+  );
+  background-size: 200% 200%;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  padding: 1.5px;
+  z-index: 0;
+  animation: spinBorder 2s linear infinite;
+}
+
+.image-right::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1.2rem;
+  box-shadow:
+    0 0 8px #8b5cf6,
+    0 0 16px #c084fc,
+    0 0 24px #8b5cf6;
+  z-index: -1;
+}
+
+/* Spin animation for border */
+@keyframes spinBorder {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Slow Zoom In-Out Animation */
+@keyframes zoomInOut {
+  0% { transform: scale(1); }
+  50% { transform: scale(2.05); } /* zoom in slightly */
+  100% { transform: scale(1); }
+}

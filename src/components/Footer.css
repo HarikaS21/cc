@@ -1,0 +1,129 @@
+.footer {
+  background: linear-gradient(180deg, #0a0014, #12002b);
+  color: #fff;
+  padding: 80px 10% 40px;
+  text-align: center;
+  border-top: 1px solid rgba(179, 136, 255, 0.2);
+}
+
+/* Top Section */
+.footer-top h2 {
+  font-size: 2rem;
+  color: #b388ff;
+  margin-bottom: 10px;
+}
+
+.footer-top p {
+  color: #ccc;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #b388ff;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  background: #d0aaff;
+  transform: translateY(-3px);
+}
+
+.download-btn .icon {
+  font-size: 1.2rem;
+}
+
+/* Middle Section */
+.footer-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 60px;
+  text-align: left;
+  gap: 50px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-column h3 {
+  color: #b388ff;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.footer-column p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #b388ff;
+}
+
+/* Contact Info */
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.contact-list .icon {
+  color: #b388ff;
+}
+
+/* Bottom Section */
+.footer-bottom {
+  border-top: 1px solid rgba(179, 136, 255, 0.2);
+  margin-top: 40px;
+  padding-top: 20px;
+  font-size: 0.95rem;
+  color: #aaa;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer {
+    padding: 60px 5% 30px;
+  }
+
+  .footer-middle {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .footer-column {
+    text-align: center;
+  }
+}

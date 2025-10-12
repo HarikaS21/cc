@@ -1,0 +1,139 @@
+/* Base Styling */
+.contact-page {
+  background: #0b0b0f;
+  color: #e4d7ff;
+  padding: 60px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Section Layouts */
+.contact-info,
+.contact-form,
+.feedback-section {
+  max-width: 800px;
+  margin: 0 auto 60px;
+  background: rgba(40, 0, 60, 0.3);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 0 25px rgba(160, 90, 255, 0.2);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease;
+}
+
+.contact-info:hover,
+.contact-form:hover,
+.feedback-section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 35px rgba(180, 100, 255, 0.4);
+}
+
+/* Headings */
+h2 {
+  color: #d3b3ff;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  text-shadow: 0 0 8px rgba(200, 150, 255, 0.5);
+}
+
+.info-block h3 {
+  color: #b58fff;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.info-block p {
+  margin: 4px 0;
+  color: #ddd;
+  font-size: 0.95rem;
+}
+
+.highlight {
+  border-top: 1px solid rgba(180, 100, 255, 0.3);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.emergency {
+  color: #ff8df7;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-shadow: 0 0 5px #ff66cc;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 500;
+  color: #c7a7ff;
+}
+
+input,
+textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(160, 90, 255, 0.4);
+  border-radius: 8px;
+  color: #fff;
+  padding: 12px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #d3b3ff;
+  box-shadow: 0 0 8px rgba(200, 150, 255, 0.4);
+}
+
+textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+/* Button */
+.btn-submit {
+  background: linear-gradient(90deg, #8b5cf6, #a855f7);
+  color: white;
+  border: none;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-submit:hover {
+  background: linear-gradient(90deg, #a855f7, #c084fc);
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(180, 100, 255, 0.4);
+}
+
+/* Feedback Section */
+.feedback-section p {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-info,
+  .contact-form,
+  .feedback-section {
+    padding: 25px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
