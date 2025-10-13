@@ -1,0 +1,81 @@
+/* Container background */
+.features-section {
+  padding-top: 3rem; /* Adjust based on Navbar height */
+  padding-bottom: 5rem;
+}
+.features-page {
+  background: linear-gradient(135deg, #2b003f, #120020, #000);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Main card */
+.features-card {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(180, 0, 255, 0.3);
+  border-radius: 2rem;
+  box-shadow: 0 0 40px rgba(180, 0, 255, 0.3);
+}
+
+/* Title */
+.features-title {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #9f7aea, #ed64a6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+/* Description */
+.features-desc {
+  font-size: 1.125rem;
+  color: #d1d5db;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Buttons container */
+.features-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Primary Button */
+.btn-primary {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(to right, #9f7aea, #ed64a6);
+  color: white;
+  font-weight: 600;
+  border-radius: 1rem;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(180, 0, 255, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(180, 0, 255, 0.8);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  padding: 0.75rem 2rem;
+  border: 1px solid #9f7aea;
+  color: #c084fc;
+  font-weight: 600;
+  border-radius: 1rem;
+  background: transparent;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(159, 122, 234, 0.2);
+  transform: scale(1.05);
+}

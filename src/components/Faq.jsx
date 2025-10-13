@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./Faq.css";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 function Faq() {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -11,66 +11,118 @@ function Faq() {
 
   const faqs = [
     {
-      question: "Who are the companions?",
+      question: "Who exactly are “Travel Companions” and what do they do?",
       answer:
-        "Companions are verified travelers who help carry or deliver your luggage while traveling to your destination, making travel safer and affordable."
+        "Travel Companions are verified travelers who help carry or deliver your luggage to your destination. They make travel safer, more affordable, and stress-free."
     },
     {
-      question: "How can I become a companion?",
+      question: "I want to become a Companion — how do I get started?",
       answer:
-        "You can sign up, verify your ID, and list your upcoming travel routes. Once verified, you’ll receive luggage requests from nearby senders."
+        "Simply sign up, verify your ID, and list your upcoming travel routes. Once verified, you’ll start receiving luggage requests from nearby senders."
     },
     {
-      question: "Is my luggage insured?",
+      question: "Is my luggage safe during the journey?",
       answer:
-        "Yes, CompanionConnect provides an optional insurance plan to protect your luggage during the journey, ensuring peace of mind."
+        "Yes, CompanionConnect offers an optional insurance plan to keep your luggage protected from pickup to delivery — giving you peace of mind."
     },
     {
-      question: "How are payments handled?",
+      question: "How and when will I receive my payment?",
       answer:
-        "All transactions are processed securely through our platform. The payment is released to the companion only after successful delivery."
+        "Payments are processed securely through the platform. Once the luggage is safely delivered, the amount is released to your Companion account."
     },
     {
-      question: "Is CompanionConnect available worldwide?",
+      question: "Can I use CompanionConnect no matter where I travel?",
       answer:
-        "Currently, CompanionConnect operates in over 150 countries, connecting thousands of users every month for safe and efficient travel."
+        "Absolutely! CompanionConnect connects thousands of travelers in 150+ countries, making it easier to send and carry items across borders."
     }
   ];
 
-  return (
-    <section className="faq-section">
-      <div className="faq-left">
-        <h2>Frequently Asked Questions</h2>
-        <p>Find answers related to the most common questions travelers ask.</p>
+  // Motion variants for floating objects
+  const floatVariant = {
+    animate: {
+      y: [0, -10, 0],
+      x: [0, 10, 0],
+      rotate: [0, 5, -5, 0],
+      transition: {
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
 
-        <div className="faq-container">
+  return (
+    <section className="relative min-h-screen flex flex-col lg:flex-row items-center justify-center px-4 py-12 bg-gradient-to-br from-[#0a0014] to-[#1a0033] overflow-hidden text-white">
+      
+      {/* Background floating objects */}
+      <motion.div className="absolute top-20 right-10 text-4xl opacity-20" variants={floatVariant} animate="animate">✈️</motion.div>
+      <motion.div className="absolute top-20 left-5 text-3xl opacity-30" variants={floatVariant} animate="animate">☁️</motion.div>
+      <motion.div className="absolute top-32 right-32 text-3xl opacity-20" variants={floatVariant} animate="animate" transition={{ duration: 8, repeat: Infinity }}>☁️</motion.div>
+      <motion.div className="absolute bottom-20 left-20 text-3xl opacity-25" variants={floatVariant} animate="animate" transition={{ duration: 10, repeat: Infinity }}>🧳</motion.div>
+      <motion.div className="absolute bottom-32 right-10 text-3xl opacity-25" variants={floatVariant} animate="animate" transition={{ duration: 9, repeat: Infinity }}>🧳</motion.div>
+
+      {/* FAQ Section */}
+      <div className="max-w-3xl w-full z-10">
+        <motion.h2
+          className="text-3xl font-bold text-center mb-4 text-[#a86ac5]"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          Frequently Asked Questions ✨
+        </motion.h2>
+
+        <motion.p
+          className="text-center text-[#c4b5fd] mb-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+        >
+          Got a question while booking your flight or planning a trip? We’ve got your answers right here.
+        </motion.p>
+
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="faq-item">
-              <div className="faq-question" onClick={() => toggleQuestion(index)}>
-                <h4>{faq.question}</h4>
-                {activeIndex === index ? (
-                  <FaChevronUp className="icon" />
-                ) : (
-                  <FaChevronDown className="icon" />
-                )}
+            <motion.div
+              key={index}
+              onClick={() => toggleQuestion(index)}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={`transition-all duration-300 ease-in-out cursor-pointer rounded-xl border border-[#4c1d95] shadow-sm bg-[#2b003f] hover:shadow-lg hover:scale-[1.02] p-5`}
+            >
+              <div className="flex justify-between items-center">
+                <h4 className="text-lg font-medium text-[#e0c3fc]">{faq.question}</h4>
+                <motion.div
+                  animate={{ rotate: activeIndex === index ? 180 : 0, scale: activeIndex === index ? 1.2 : 1 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                >
+                  <FaChevronDown className="text-[#a86ac5]" />
+                </motion.div>
               </div>
-              <div
-                className={`faq-answer ${
-                  activeIndex === index ? "open" : ""
-                }`}
+
+              <motion.div
+                initial={false}
+                animate={{
+                  height: activeIndex === index ? "auto" : 0,
+                  opacity: activeIndex === index ? 1 : 0
+                }}
+                transition={{ duration: 0.4, ease: [0.25, 0.8, 0.25, 1] }}
+                className="overflow-hidden"
               >
-                <p>{faq.answer}</p>
-              </div>
-            </div>
+                <motion.p
+                  initial={{ y: -10 }}
+                  animate={{ y: activeIndex === index ? 0 : -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-[#c4b5fd] mt-3"
+                >
+                  {faq.answer}
+                </motion.p>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
-      </div>
-
-      {/* Right side for animation */}
-      <div className="faq-right">
-        {/* You can later add: 
-          <Lottie animationData={yourAnimation} loop={true} />
-        */}
       </div>
     </section>
   );

@@ -1,0 +1,180 @@
+import React, { useState } from "react";
+import { FileText } from "lucide-react";
+import Lottie from "react-lottie-player";
+import { useNavigate } from "react-router-dom";
+// Side Lottie animation
+import sideAnimation from "../assets/signup1.json";  
+
+export default function Signup() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    profileImage: "",
+    userType: "traveler",
+  });
+    const navigate = useNavigate();
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
+     // After signup, navigate to Login page
+    navigate("/login");
+  };
+
+  return (
+    <div className="flex justify-center bg-black px-2 py-6">
+  {/* Main container */}
+  <div className="flex flex-col md:flex-row items-start bg-[#1a001f] rounded-xl shadow-xl p-4 md:p-6 space-y-4 md:space-y-0 md:space-x-6 w-full max-w-5xl"
+       style={{ minHeight: '50vh', marginTop: '80px' }}>
+    
+        {/* Side Lottie Animation */}
+        <div className="hidden md:flex w-1/2 justify-center items-center">
+          <Lottie
+            loop
+            animationData={sideAnimation}
+            play
+            className="w-64 h-64 md:w-80 md:h-85"
+          />
+        </div>
+
+        {/* Signup Form */}
+        <div className="w-full md:w-1/2 flex flex-col items-center space-y-4">
+
+          {/* Heading */}
+          <h2 className="text-3xl font-bold text-violet-400 text-center">
+            Ready, Set, Go
+          </h2>
+          <p className="text-gray-300 text-center mb-2">
+            Create your account to connect with flight companions
+          </p>
+
+          <form onSubmit={handleSubmit} className="w-full space-y-3">
+
+            {/* Full Name */}
+            <div>
+              <label className="block text-sm font-semibold text-violet-300 mb-1">
+                Full Name *
+              </label>
+              <input
+                type="text"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleInputChange}
+                required
+                placeholder="John Doe"
+                className="w-full border-2 border-violet-600 rounded-lg px-4 py-2 bg-black text-white focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-500 transition"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block text-sm font-semibold text-violet-300 mb-1">
+                Email *
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                placeholder="you@example.com"
+                className="w-full border-2 border-violet-600 rounded-lg px-4 py-2 bg-black text-white focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-500 transition"
+              />
+            </div>
+
+            {/* Password */}
+            <div>
+              <label className="block text-sm font-semibold text-violet-300 mb-1">
+                Password *
+              </label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                required
+                placeholder="********"
+                className="w-full border-2 border-violet-600 rounded-lg px-4 py-2 bg-black text-white focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-500 transition"
+              />
+            </div>
+
+            {/* User Type */}
+            <div>
+              <label className="block text-sm font-semibold text-violet-300 mb-1">
+                I am a *
+              </label>
+              <select
+                name="userType"
+                value={formData.userType}
+                onChange={handleInputChange}
+                className="w-full border-2 border-violet-600 rounded-lg px-4 py-2 bg-black text-white focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-500 transition"
+              >
+                <option value="traveler">Traveler</option>
+                <option value="companion">Companion</option>
+              </select>
+            </div>
+
+            {/* Profile Image */}
+            <div>
+              <label className="block text-sm font-semibold text-violet-300 mb-1">
+                <FileText className="w-4 h-4 inline mr-1" />
+                Profile Image *
+              </label>
+              <label className="form-input w-full border-2 border-violet-600 rounded-lg px-4 py-2 text-white cursor-pointer flex items-center justify-center hover:border-violet-400 focus-within:border-violet-400 focus-within:ring-2 focus-within:ring-violet-500 transition bg-black">
+                Choose File
+                <input
+                  type="file"
+                  accept="image/*"
+                  required
+                  name="profileImage"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                      const imageUrl = URL.createObjectURL(file);
+                      setFormData((prev) => ({ ...prev, profileImage: imageUrl }));
+                    }
+                  }}
+                  className="hidden"
+                />
+              </label>
+              {formData.profileImage && (
+                <img
+                  src={formData.profileImage}
+                  alt="Preview"
+                  className="mt-2 w-24 h-24 object-cover rounded-full shadow-md border-2 border-violet-500 self-center"
+                />
+              )}
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full px-6 py-3 rounded-full bg-gradient-to-r from-violet-600 to-purple-700 text-white font-bold text-lg shadow-lg shadow-violet-500/50 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
+              {formData.userType === "companion"
+                ? "Register as Companion"
+                : "Login ✈️"}
+            </button>
+          </form>
+          {/* Optional: Direct login link for existing users */}
+          <p className="text-gray-400 text-sm mt-2">
+            Already have an account?{" "}
+            <span
+              className="text-violet-400 cursor-pointer underline"
+              onClick={() => navigate("/login")}
+            >
+              Login here
+            </span>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  );
+}

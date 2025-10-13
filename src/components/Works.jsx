@@ -6,7 +6,7 @@ import thinking from "../assets/thinking.json"; // your Lottie animation in src/
 function Works() {
   return (
     <section className="works-section" id="how-it-works">
-      <h2 className="works-heading">How It Works</h2>
+      <h1 className="works-heading">Travel Flow</h1>
 
       <div className="works-container">
         {/* Left Column */}

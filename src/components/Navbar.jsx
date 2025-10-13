@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import { FaPlaneDeparture } from "react-icons/fa6";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="bg-black/40 p-3 sm:p-4 fixed top-0 left-0 w-full z-50 backdrop-blur-sm">
@@ -36,8 +37,11 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Sign Up Button */}
-        <button className="hidden md:block bg-[#2B003F]/50 text-white px-3 py-2 sm:px-4 sm:py-3 rounded-lg font-semibold uppercase text-xs sm:text-sm hover:bg-[#2B003F]/70 transition-colors">
+        {/* Desktop Sign Up Button */}
+        <button
+          onClick={() => navigate("/signup")}
+          className="hidden md:block bg-gradient-to-r from-purple-600 to-pink-500 text-white px-6 py-3 rounded-full font-bold text-sm sm:text-base shadow-lg shadow-purple-500/50 hover:-translate-y-1 hover:shadow-xl transition-transform duration-300"
+        >
           Sign Up
         </button>
 
@@ -106,7 +110,14 @@ const Navbar = () => {
               Contact Us
             </Link>
 
-            <button className="bg-[#a86ac5] text-white py-4 px-4 rounded-lg font-semibold uppercase mt-4 hover:bg-[#8c4fa8] transition-colors">
+            {/* Mobile Sign Up Button */}
+            <button
+              onClick={() => {
+                navigate("/signup");
+                setIsMenuOpen(false);
+              }}
+              className="w-full px-10 py-5 mt-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white font-bold text-xl shadow-lg shadow-purple-500/50 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
               Sign Up
             </button>
           </div>

@@ -4,16 +4,23 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 // Components
-import Navbar from "./components/Navbar"; // Navbar
+import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Works from "./components/Works";
 import Morefeatures from "./components/Morefeatures";
 import Users from "./components/Users";
 import Security from "./components/SecurityFeatures";
 import Faq from "./components/Faq";
-import ContactUs from "./pages/ContactUs";
-import AboutUs from "./pages/AboutUs"; // New About Us page
 import Footer from "./components/Footer";
+
+// Pages
+import Features from "./pages/Features";
+import ContactUs from "./pages/ContactUs";
+import AboutUs from "./pages/AboutUs";
+import FindTravelBuddy from "./pages/FindTravelBuddy";
+import Signup from "./pages/SignUp";
+import Login from "./pages/Login"; 
+
 
 // Styles
 import "./App.css";
@@ -30,7 +37,7 @@ function App() {
         <Navbar />
 
         <Routes>
-          {/* Home Route - All Sections */}
+          {/* 🏠 Home Page (All Sections) */}
           <Route
             path="/"
             element={
@@ -46,20 +53,37 @@ function App() {
             }
           />
 
-          {/* Find Travel Buddy - Placeholder for future */}
+          {/* 🧳 Find Travel Buddy Page */}
           <Route
             path="/findtravelbuddy"
             element={
               <>
-                <div className="py-40 text-center text-white text-3xl">
-                  Find Travel Buddy (Coming Soon)
-                </div>
-                <Footer />
+                <FindTravelBuddy />
               </>
             }
           />
 
-          {/* Features - Placeholder for future */}
+          {/* ✈️ Signup Page */}
+          <Route
+            path="/signup"
+            element={
+              <>
+                <Signup />
+              </>
+            }
+          />
+
+          {/* 🔑 Login Page */}
+          <Route
+            path="/login"
+            element={
+              <>
+                <Login />
+              </>
+            }
+          />
+
+          {/* 💡 Features - Future Page Placeholder */}
           <Route
             path="/features"
             element={
@@ -67,12 +91,13 @@ function App() {
                 <div className="py-40 text-center text-white text-3xl">
                   Features Page (Coming Soon)
                 </div>
+                <Features />
                 <Footer />
               </>
             }
           />
 
-          {/* About Us - Real AboutUs page */}
+          {/* 🧍 About Us Page */}
           <Route
             path="/about-us"
             element={
@@ -83,7 +108,7 @@ function App() {
             }
           />
 
-          {/* Contact Us - Only Contact Form + Footer */}
+          {/* 📞 Contact Us Page */}
           <Route
             path="/contact-us"
             element={
