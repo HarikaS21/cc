@@ -16,6 +16,8 @@ import {
   Send,
   Clock,
   CheckCircle,
+  Menu,
+  X,
 } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -33,6 +35,7 @@ export default function FindTravelBuddy() {
   const [chatWith, setChatWith] = useState(null);
   const [currentMessage, setCurrentMessage] = useState("");
   const [messages, setMessages] = useState({});
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -216,20 +219,61 @@ export default function FindTravelBuddy() {
     visible: { opacity: 1, y: 0 },
   };
 
+  // Mobile menu toggle
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   // =============================
   // MAIN VIEW (With Lottie)
   // =============================
   if (view === "main") {
     return (
-      <div className="aboutus-container min-h-screen">
+      <div className="find-travel-buddy-container">
         <Navbar />
+        
+        {/* Mobile Menu Button */}
+        <button 
+          className="mobile-menu-btn"
+          onClick={toggleMobileMenu}
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
 
-        <section className="aboutus-hero pt-32 pb-24 min-h-screen flex flex-col items-center text-center">
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div className="mobile-menu-overlay">
+            <div className="mobile-menu-content">
+              <button 
+                className="mobile-nav-item"
+                onClick={() => {
+                  setUserType("companion");
+                  setView("form");
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                I'm a Companion
+              </button>
+              <button 
+                className="mobile-nav-item"
+                onClick={() => {
+                  setUserType("looking");
+                  setView("form");
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Looking for a Companion
+              </button>
+            </div>
+          </div>
+        )}
+
+        <section className="hero-section">
           <motion.h1
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
-            className="aboutus-title text-5xl md:text-7xl mb-6"
+            className="hero-title"
           >
             Find Your Travel Buddy
           </motion.h1>
@@ -238,12 +282,12 @@ export default function FindTravelBuddy() {
             animate="visible"
             variants={fadeInUp}
             transition={{ delay: 0.2 }}
-            className="aboutus-description text-xl md:text-2xl max-w-3xl"
+            className="hero-description"
           >
             Choose your role and start connecting with verified travel companions
           </motion.p>
 
-          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto mt-16">
+          <div className="options-grid">
             {/* Companion Card */}
             <motion.div
               initial="hidden"
@@ -255,24 +299,22 @@ export default function FindTravelBuddy() {
                 setView("form");
               }}
               whileHover={{ scale: 1.05, y: -10 }}
-              className="cursor-pointer group"
+              className="option-card companion-option"
             >
-              <div className="feature-card p-10 rounded-3xl shadow-2xl bg-gradient-to-br from-primary to-primary/70">
-                <div className="h-80 flex items-center justify-center relative overflow-hidden rounded-2xl mb-6 bg-[#0a0014]">
-                  <Lottie
-                    animationData={companionAnim}
-                    loop
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-primary/70" />
-                  {/* <UserPlus className="w-24 h-24 text-white relative z-10" /> */}
-                </div>
-                
-                <p className="feature-text mb-6">
+              <div className="animation-container">
+                <Lottie
+                  animationData={companionAnim}
+                  loop
+                  className="lottie-animation"
+                />
+                <div className="animation-overlay" />
+              </div>
+              
+              <div className="option-content">
+                <p className="option-text">
                   Offer your companionship services and help travelers on their journeys
                 </p>
-                <h2 className="feature-title mb-4">IAM A COMPANION</h2>
-                
+                <h2 className="option-title">I'M A COMPANION</h2>
               </div>
             </motion.div>
 
@@ -287,24 +329,22 @@ export default function FindTravelBuddy() {
                 setView("form");
               }}
               whileHover={{ scale: 1.05, y: -10 }}
-              className="cursor-pointer group"
+              className="option-card looking-option"
             >
-              <div className="feature-card p-10 rounded-3xl shadow-2xl bg-gradient-to-br from-accent to-accent/70">
-                <div className="h-80 flex items-center justify-center relative overflow-hidden rounded-2xl mb-6 bg-[#0a0014]">
-                  <Lottie
-                    animationData={lookingAnim}
-                    loop
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-accent/70" />
-                  {/* <Users className="w-24 h-24 text-white relative z-10" /> */}
-                </div>
+              <div className="animation-container">
+                <Lottie
+                  animationData={lookingAnim}
+                  loop
+                  className="lottie-animation"
+                />
+                <div className="animation-overlay" />
+              </div>
               
-                <p className="feature-text mb-6">
+              <div className="option-content">
+                <p className="option-text">
                   Find verified companions to join you on your travel adventures
                 </p>
-                 <h2 className="feature-title mb-5">LOOKING FOR A COMPANION</h2>
-               
+                <h2 className="option-title">LOOKING FOR A COMPANION</h2>
               </div>
             </motion.div>
           </div>
@@ -315,42 +355,38 @@ export default function FindTravelBuddy() {
     );
   }
 
-  // The rest (form view, companion list, chat view) remains the same — no changes required.
-  // Paste them below as per your existing code if needed.
-
   // Form View
   if (view === "form") {
     return (
-      <div className="aboutus-container min-h-screen">
+      <div className="find-travel-buddy-container">
         <Navbar />
 
-        <section className="pt-32 pb-24">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="form-section">
+          <div className="form-container">
             <motion.div
               initial="hidden"
               animate="visible"
               variants={fadeInUp}
-              className="text-center mb-12"
+              className="form-header"
             >
               <button
                 onClick={() => setView("main")}
-                className="text-primary hover:text-accent mb-6 inline-flex items-center space-x-2 font-semibold"
+                className="back-button"
               >
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowLeft className="button-icon" />
                 <span>Back to options</span>
               </button>
-              <div className="mb-6 h-48 w-full rounded-3xl overflow-hidden">
+              <div className="form-image-container">
                 <img
-  src={userType === "companion" ? registerImg : registerImg2}
-  alt="Travel"
-  className="w-full h-full object-cover"
-/>
-
+                  src={userType === "companion" ? registerImg : registerImg2}
+                  alt="Travel"
+                  className="form-image"
+                />
               </div>
-              <h1 className="text-4xl md:text-6xl font-serif font-bold text-primary mb-4">
+              <h1 className="form-title">
                 {userType === "companion" ? "Register as Companion" : "Find Your Companion"}
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="form-subtitle">
                 {userType === "companion"
                   ? "Fill in your details to offer companionship services"
                   : "Provide your travel details to find the perfect companion"}
@@ -362,13 +398,13 @@ export default function FindTravelBuddy() {
               animate="visible"
               variants={fadeInUp}
               transition={{ delay: 0.2 }}
-              className="feature-card p-8 md:p-12 rounded-3xl shadow-2xl"
+              className="form-card"
             >
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-primary mb-2">
-                      <Mail className="w-4 h-4 inline mr-2" />
+              <form onSubmit={handleSubmit} className="travel-form">
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label className="form-label">
+                      <Mail className="label-icon" />
                       Full Name *
                     </label>
                     <input
@@ -382,9 +418,9 @@ export default function FindTravelBuddy() {
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-primary mb-2">
-                      <Mail className="w-4 h-4 inline mr-2" />
+                  <div className="form-group">
+                    <label className="form-label">
+                      <Mail className="label-icon" />
                       Email Address *
                     </label>
                     <input
@@ -398,9 +434,9 @@ export default function FindTravelBuddy() {
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-primary mb-2">
-                      <Phone className="w-4 h-4 inline mr-2" />
+                  <div className="form-group">
+                    <label className="form-label">
+                      <Phone className="label-icon" />
                       Phone Number *
                     </label>
                     <input
@@ -414,9 +450,9 @@ export default function FindTravelBuddy() {
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-primary mb-2">
-                      <FileText className="w-4 h-4 inline mr-2" />
+                  <div className="form-group">
+                    <label className="form-label">
+                      <FileText className="label-icon" />
                       Profile Image URL *
                     </label>
                     <input
@@ -430,9 +466,9 @@ export default function FindTravelBuddy() {
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-primary mb-2">
-                      <MapPin className="w-4 h-4 inline mr-2" />
+                  <div className="form-group">
+                    <label className="form-label">
+                      <MapPin className="label-icon" />
                       From (City/Airport) *
                     </label>
                     <input
@@ -446,9 +482,9 @@ export default function FindTravelBuddy() {
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-primary mb-2">
-                      <Plane className="w-4 h-4 inline mr-2" />
+                  <div className="form-group">
+                    <label className="form-label">
+                      <Plane className="label-icon" />
                       To (City/Airport) *
                     </label>
                     <input
@@ -462,9 +498,9 @@ export default function FindTravelBuddy() {
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-primary mb-2">
-                      <Calendar className="w-4 h-4 inline mr-2" />
+                  <div className="form-group">
+                    <label className="form-label">
+                      <Calendar className="label-icon" />
                       Travel Date *
                     </label>
                     <input
@@ -477,9 +513,9 @@ export default function FindTravelBuddy() {
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-primary mb-2">
-                      <Plane className="w-4 h-4 inline mr-2" />
+                  <div className="form-group">
+                    <label className="form-label">
+                      <Plane className="label-icon" />
                       Flight Number *
                     </label>
                     <input
@@ -493,9 +529,9 @@ export default function FindTravelBuddy() {
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-primary mb-2">
-                      <Clock className="w-4 h-4 inline mr-2" />
+                  <div className="form-group">
+                    <label className="form-label">
+                      <Clock className="label-icon" />
                       Departure Time *
                     </label>
                     <input
@@ -509,9 +545,9 @@ export default function FindTravelBuddy() {
                   </div>
 
                   {userType === "companion" && (
-                    <div>
-                      <label className="block text-sm font-semibold text-primary mb-2">
-                        <FileText className="w-4 h-4 inline mr-2" />
+                    <div className="form-group">
+                      <label className="form-label">
+                        <FileText className="label-icon" />
                         Price (Optional)
                       </label>
                       <input
@@ -528,12 +564,12 @@ export default function FindTravelBuddy() {
 
                 {userType === "companion" && (
                   <div className="offer-section">
-                    <h3 className="text-xl font-semibold text-primary mb-4 flex items-center">
-                      <CheckCircle className="w-5 h-5 mr-2" />
+                    <h3 className="offer-title">
+                      <CheckCircle className="title-icon" />
                       What I Can Offer
                     </h3>
                     
-                    <div className="space-y-4">
+                    <div className="checkbox-group">
                       <label className="checkbox-label">
                         <input
                           type="checkbox"
@@ -542,8 +578,8 @@ export default function FindTravelBuddy() {
                           onChange={handleInputChange}
                           className="checkbox-input"
                         />
-                        <div className="flex items-center gap-2">
-                          <Luggage className="w-5 h-5 text-primary" />
+                        <div className="checkbox-content">
+                          <Luggage className="checkbox-icon" />
                           <span className="checkbox-text">
                             I can carry additional luggage
                           </span>
@@ -558,8 +594,8 @@ export default function FindTravelBuddy() {
                           onChange={handleInputChange}
                           className="checkbox-input"
                         />
-                        <div className="flex items-center gap-2">
-                          <Users className="w-5 h-5 text-primary" />
+                        <div className="checkbox-content">
+                          <Users className="checkbox-icon" />
                           <span className="checkbox-text">
                             I can be a travel companion
                           </span>
@@ -568,8 +604,8 @@ export default function FindTravelBuddy() {
                     </div>
 
                     {formData.offerLuggage && (
-                      <div className="mt-4">
-                        <label className="block text-sm font-semibold text-primary mb-2">
+                      <div className="luggage-details">
+                        <label className="form-label">
                           Luggage Details
                         </label>
                         <textarea
@@ -577,7 +613,7 @@ export default function FindTravelBuddy() {
                           value={formData.luggageDetails}
                           onChange={handleInputChange}
                           rows={3}
-                          className="form-input resize-none"
+                          className="form-textarea"
                           placeholder="Weight limit, dimensions, special conditions..."
                         />
                       </div>
@@ -587,7 +623,7 @@ export default function FindTravelBuddy() {
 
                 <button
                   type="submit"
-                  className="submit-btn"
+                  className="submit-button"
                 >
                   {userType === "companion" ? "Submit Details" : "Find Companions"}
                 </button>
@@ -604,28 +640,28 @@ export default function FindTravelBuddy() {
   // Companions List View
   if (view === "companions") {
     return (
-      <div className="aboutus-container min-h-screen">
+      <div className="find-travel-buddy-container">
         <Navbar />
 
-        <section className="pt-32 pb-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="companions-section">
+          <div className="companions-container">
             <motion.div
               initial="hidden"
               animate="visible"
               variants={fadeInUp}
-              className="text-center mb-12"
+              className="companions-header"
             >
               <button
                 onClick={() => setView("main")}
-                className="text-primary hover:text-accent mb-6 inline-flex items-center space-x-2 font-semibold"
+                className="back-button"
               >
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowLeft className="button-icon" />
                 <span>Back to Home</span>
               </button>
-              <h1 className="text-4xl md:text-6xl font-serif font-bold text-primary mb-4">
+              <h1 className="companions-title">
                 Available Companions
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="companions-subtitle">
                 Find the perfect travel buddy for your journey
               </p>
             </motion.div>
@@ -640,7 +676,7 @@ export default function FindTravelBuddy() {
                   transition={{ delay: index * 0.1 }}
                   className="companion-card"
                 >
-                  <div className="companion-image-wrapper">
+                  <div className="companion-image-container">
                     <img
                       src={companion.image}
                       alt={companion.name}
@@ -653,33 +689,33 @@ export default function FindTravelBuddy() {
 
                     <div className="companion-details">
                       <div className="detail-item">
-                        <MapPin className="w-4 h-4" />
+                        <MapPin className="detail-icon" />
                         <span>{companion.from} → {companion.to}</span>
                       </div>
                       <div className="detail-item">
-                        <Calendar className="w-4 h-4" />
+                        <Calendar className="detail-icon" />
                         <span>{companion.date}</span>
                       </div>
                       <div className="detail-item">
-                        <Plane className="w-4 h-4" />
+                        <Plane className="detail-icon" />
                         <span>{companion.flightNumber}</span>
                       </div>
                       <div className="detail-item">
-                        <Clock className="w-4 h-4" />
+                        <Clock className="detail-icon" />
                         <span>{companion.departureTime}</span>
                       </div>
                     </div>
 
                     <div className="companion-badges">
                       {companion.luggageOffered && (
-                        <span className="badge badge-luggage">
-                          <Luggage className="w-3 h-3" />
+                        <span className="badge luggage-badge">
+                          <Luggage className="badge-icon" />
                           Luggage
                         </span>
                       )}
                       {companion.companionOffered && (
-                        <span className="badge badge-companion">
-                          <Users className="w-3 h-3" />
+                        <span className="badge companion-badge">
+                          <Users className="badge-icon" />
                           Companion
                         </span>
                       )}
@@ -692,9 +728,9 @@ export default function FindTravelBuddy() {
                         setChatWith(companion);
                         setView("chat");
                       }}
-                      className="chat-btn"
+                      className="chat-button"
                     >
-                      <MessageCircle className="w-5 h-5" />
+                      <MessageCircle className="button-icon" />
                       Chat Now
                     </button>
                   </div>
@@ -712,11 +748,11 @@ export default function FindTravelBuddy() {
   // Chat View
   if (view === "chat") {
     return (
-      <div className="aboutus-container min-h-screen">
+      <div className="find-travel-buddy-container">
         <Navbar />
 
-        <section className="pt-32 pb-24">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="chat-section">
+          <div className="chat-container-wrapper">
             <motion.div
               initial="hidden"
               animate="visible"
@@ -724,22 +760,22 @@ export default function FindTravelBuddy() {
             >
               <button
                 onClick={() => setView("companions")}
-                className="text-primary hover:text-accent mb-6 inline-flex items-center space-x-2 font-semibold"
+                className="back-button"
               >
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowLeft className="button-icon" />
                 <span>Back to Companions</span>
               </button>
 
-              <div className="chat-container">
+              <div className="chat-interface">
                 <div className="chat-header">
                   <img
                     src={chatWith?.image}
                     alt={chatWith?.name}
                     className="chat-avatar"
                   />
-                  <div>
-                    <h3 className="chat-name">{chatWith?.name}</h3>
-                    <p className="chat-route">
+                  <div className="chat-user-info">
+                    <h3 className="chat-user-name">{chatWith?.name}</h3>
+                    <p className="chat-user-route">
                       {chatWith?.from} → {chatWith?.to}
                     </p>
                   </div>
@@ -749,17 +785,17 @@ export default function FindTravelBuddy() {
                   {(messages[chatWith?.id] || []).map((msg, idx) => (
                     <div
                       key={idx}
-                      className={`message ${msg.sender === 'user' ? 'message-user' : 'message-companion'}`}
+                      className={`message ${msg.sender === 'user' ? 'user-message' : 'companion-message'}`}
                     >
                       <div className="message-bubble">
-                        <p>{msg.text}</p>
+                        <p className="message-text">{msg.text}</p>
                         <span className="message-time">{msg.time}</span>
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="chat-input-container">
+                <div className="chat-input-area">
                   <input
                     type="text"
                     value={currentMessage}
@@ -770,9 +806,9 @@ export default function FindTravelBuddy() {
                   />
                   <button
                     onClick={handleSendMessage}
-                    className="send-btn"
+                    className="send-button"
                   >
-                    <Send className="w-5 h-5" />
+                    <Send className="button-icon" />
                   </button>
                 </div>
               </div>

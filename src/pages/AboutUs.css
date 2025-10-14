@@ -1,34 +1,61 @@
-/* Container */
+/* -------------------- Container -------------------- */
 .aboutus-container {
-  padding-top: 6rem;
+  padding-top: 4rem;
   min-height: 100vh;
   background: linear-gradient(to bottom, #0a0014, #1a0033, #000000);
   color: white;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 480px) {
+  .aboutus-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 5rem;
+  }
 }
 
 @media (min-width: 768px) {
   .aboutus-container {
     padding-left: 4rem;
     padding-right: 4rem;
+    padding-top: 6rem;
   }
 }
 
-/* Hero Section */
+/* -------------------- Hero Section -------------------- */
 .aboutus-hero {
   background: linear-gradient(to right, #2b003f, #3e005c, #a86ac5);
-  padding: 5rem 1.5rem;
+  padding: 3rem 1rem;
   text-align: center;
-  border-bottom-left-radius: 3rem;
-  border-bottom-right-radius: 3rem;
-  box-shadow: 0 0 25px #a86ac5aa;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  box-shadow: 0 0 20px #a86ac5aa;
+}
+
+@media (min-width: 480px) {
+  .aboutus-hero {
+    padding: 4rem 1.5rem;
+    border-bottom-left-radius: 2.5rem;
+    border-bottom-right-radius: 2.5rem;
+    box-shadow: 0 0 22px #a86ac5aa;
+  }
+}
+
+@media (min-width: 768px) {
+  .aboutus-hero {
+    padding: 5rem 2rem;
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    box-shadow: 0 0 25px #a86ac5aa;
+  }
 }
 
 .aboutus-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .aboutus-highlight {
@@ -37,52 +64,99 @@
 
 .aboutus-description {
   color: rgba(255, 255, 255, 0.9);
-  max-width: 48rem;
+  max-width: 100%;
   margin: 0 auto;
-  font-size: 1.125rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 480px) {
+  .aboutus-title {
+    font-size: 2.25rem;
+  }
+  .aboutus-description {
+    font-size: 1.125rem;
+    max-width: 36rem;
+  }
 }
 
 @media (min-width: 768px) {
   .aboutus-title {
     font-size: 3rem;
   }
-
   .aboutus-description {
     font-size: 1.25rem;
+    max-width: 48rem;
   }
 }
 
-/* Features Section */
+/* -------------------- Features Section -------------------- */
 .aboutus-features {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
-  padding: 4rem 1.5rem;
-  max-width: 72rem;
+  gap: 1.5rem;
+  padding: 3rem 1rem;
+  max-width: 100%;
   margin: 0 auto;
+}
+
+@media (min-width: 480px) and (max-width: 599px) {
+  .aboutus-features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 3.5rem 1.5rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+  .aboutus-features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 4rem 2rem;
+  }
 }
 
 @media (min-width: 768px) {
   .aboutus-features {
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 4rem 2rem;
+    max-width: 72rem;
   }
 }
 
+/* -------------------- Feature Cards -------------------- */
 .feature-card {
   background: rgba(26, 0, 51, 0.7);
-  padding: 1.5rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 0 20px #a86ac5aa;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 0 15px #a86ac5aa;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px #a86ac5aa;
 }
 
 .feature-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   color: #a86ac5;
 }
 
 .feature-text {
   color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
+
+@media (min-width: 480px) {
+  .feature-title { font-size: 1.2rem; }
+  .feature-text { font-size: 1rem; }
+}
+
+@media (min-width: 768px) {
+  .feature-title { font-size: 1.25rem; }
+  .feature-text { font-size: 1.05rem; }
 }

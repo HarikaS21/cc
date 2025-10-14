@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { FileText } from "lucide-react";
 import Lottie from "react-lottie-player";
 import { useNavigate } from "react-router-dom";
-// Side Lottie animation
-import sideAnimation from "../assets/signup1.json";  
+import sideAnimation from "../assets/signup1.json";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -13,7 +12,7 @@ export default function Signup() {
     profileImage: "",
     userType: "traveler",
   });
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,39 +22,34 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-     // After signup, navigate to Login page
     navigate("/login");
   };
 
   return (
-    <div className="flex justify-center bg-black px-2 py-6">
-  {/* Main container */}
-  <div className="flex flex-col md:flex-row items-start bg-[#1a001f] rounded-xl shadow-xl p-4 md:p-6 space-y-4 md:space-y-0 md:space-x-6 w-full max-w-5xl"
-       style={{ minHeight: '50vh', marginTop: '80px' }}>
-    
-        {/* Side Lottie Animation */}
-        <div className="hidden md:flex w-1/2 justify-center items-center">
+    <div className="min-h-screen flex justify-center items-start bg-black px-4 py-6">
+      {/* Main Container */}
+      <div className="flex flex-col md:flex-row items-center md:items-start bg-[#1a001f] rounded-xl shadow-xl p-4 md:p-8 w-full max-w-5xl space-y-6 md:space-y-0 md:space-x-8">
+        
+        {/* Lottie Animation */}
+        <div className="w-full md:w-1/2 flex justify-center items-center">
           <Lottie
             loop
             animationData={sideAnimation}
             play
-            className="w-64 h-64 md:w-80 md:h-85"
+            className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80"
           />
         </div>
 
-        {/* Signup Form */}
+        {/* Form */}
         <div className="w-full md:w-1/2 flex flex-col items-center space-y-4">
-
-          {/* Heading */}
-          <h2 className="text-3xl font-bold text-violet-400 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-violet-400 text-center">
             Ready, Set, Go
           </h2>
-          <p className="text-gray-300 text-center mb-2">
+          <p className="text-gray-300 text-center text-sm sm:text-base">
             Create your account to connect with flight companions
           </p>
 
-          <form onSubmit={handleSubmit} className="w-full space-y-3">
-
+          <form onSubmit={handleSubmit} className="w-full space-y-4">
             {/* Full Name */}
             <div>
               <label className="block text-sm font-semibold text-violet-300 mb-1">
@@ -122,9 +116,8 @@ export default function Signup() {
 
             {/* Profile Image */}
             <div>
-              <label className="block text-sm font-semibold text-violet-300 mb-1">
-                <FileText className="w-4 h-4 inline mr-1" />
-                Profile Image *
+              <label className="block text-sm font-semibold text-violet-300 mb-1 flex items-center gap-1">
+                <FileText className="w-4 h-4" /> Profile Image *
               </label>
               <label className="form-input w-full border-2 border-violet-600 rounded-lg px-4 py-2 text-white cursor-pointer flex items-center justify-center hover:border-violet-400 focus-within:border-violet-400 focus-within:ring-2 focus-within:ring-violet-500 transition bg-black">
                 Choose File
@@ -162,8 +155,9 @@ export default function Signup() {
                 : "Login ✈️"}
             </button>
           </form>
-          {/* Optional: Direct login link for existing users */}
-          <p className="text-gray-400 text-sm mt-2">
+
+          {/* Optional: Login Link */}
+          <p className="text-gray-400 text-sm mt-2 text-center">
             Already have an account?{" "}
             <span
               className="text-violet-400 cursor-pointer underline"
@@ -172,7 +166,6 @@ export default function Signup() {
               Login here
             </span>
           </p>
-
         </div>
       </div>
     </div>
