@@ -88,9 +88,7 @@ function App() {
             path="/features"
             element={
               <>
-                <div className="py-40 text-center text-white text-3xl">
-                  Features Page (Coming Soon)
-                </div>
+               
                 <Features />
                 <Footer />
               </>

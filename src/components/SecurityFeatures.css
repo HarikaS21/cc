@@ -205,6 +205,6 @@
 /* Slow Zoom In-Out Animation */
 @keyframes zoomInOut {
   0% { transform: scale(1); }
-  50% { transform: scale(2.05); } /* zoom in slightly */
+  50% { transform: scale(1.05); } /* zoom in slightly */
   100% { transform: scale(1); }
 }

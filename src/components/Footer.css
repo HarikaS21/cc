@@ -1,11 +1,9 @@
-/* Footer Container */
 .footer {
   background: linear-gradient(180deg, #0a0014, #12002b);
   color: #fff;
   padding: 80px 10% 40px;
   text-align: center;
   border-top: 1px solid rgba(179, 136, 255, 0.2);
-  font-family: 'Inter', sans-serif;
 }
 
 /* Top Section */
@@ -19,7 +17,6 @@
   color: #ccc;
   font-size: 1.1rem;
   margin-bottom: 25px;
-  line-height: 1.5;
 }
 
 .download-btn {
@@ -52,8 +49,8 @@
   align-items: flex-start;
   flex-wrap: wrap;
   margin-top: 60px;
-  gap: 50px;
   text-align: left;
+  gap: 50px;
 }
 
 .footer-column {
@@ -70,7 +67,6 @@
 .footer-column p {
   color: #ccc;
   line-height: 1.6;
-  font-size: 0.95rem;
 }
 
 .footer-column ul {
@@ -99,12 +95,10 @@
   gap: 10px;
   color: #ccc;
   margin-bottom: 10px;
-  font-size: 0.95rem;
 }
 
 .contact-list .icon {
   color: #b388ff;
-  font-size: 1.1rem;
 }
 
 /* Bottom Section */
@@ -112,66 +106,24 @@
   border-top: 1px solid rgba(179, 136, 255, 0.2);
   margin-top: 40px;
   padding-top: 20px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: #aaa;
   text-align: center;
 }
 
-/* -------------------- Responsive -------------------- */
-
-/* Mobile (<600px) */
-@media (max-width: 599px) {
+/* Responsive */
+@media (max-width: 900px) {
   .footer {
-    padding: 50px 5% 30px;
+    padding: 60px 5% 30px;
   }
-
-  .footer-top h2 { font-size: 1.5rem; }
-  .footer-top p { font-size: 1rem; }
-  .download-btn { padding: 10px 20px; font-size: 0.95rem; }
 
   .footer-middle {
     flex-direction: column;
     text-align: center;
-    gap: 30px;
-  }
-
-  .footer-column { text-align: center; }
-  .footer-column h3 { font-size: 1.1rem; }
-  .footer-column p, .contact-list li, .footer-column ul li a { font-size: 0.9rem; }
-}
-
-/* Tablets (600px - 900px) */
-@media (min-width: 600px) and (max-width: 900px) {
-  .footer {
-    padding: 60px 7% 35px;
-  }
-
-  .footer-top h2 { font-size: 1.75rem; }
-  .footer-top p { font-size: 1.05rem; }
-  .download-btn { padding: 11px 22px; font-size: 1rem; }
-
-  .footer-middle {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
     gap: 40px;
   }
 
-  .footer-column { text-align: center; min-width: 220px; }
-}
-
-/* Desktop (>900px) */
-@media (min-width: 901px) {
-  .footer {
-    padding: 80px 10% 40px;
+  .footer-column {
+    text-align: center;
   }
-
-  .footer-middle {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-  }
-
-  .footer-column { text-align: left; }
 }

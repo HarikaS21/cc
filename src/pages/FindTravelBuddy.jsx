@@ -229,11 +229,11 @@ export default function FindTravelBuddy() {
   // =============================
   if (view === "main") {
     return (
-      <div className="find-travel-buddy-container">
+      <div className="find-travel-buddy-container pt-15">
         <Navbar />
-        
+
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="mobile-menu-btn"
           onClick={toggleMobileMenu}
         >
@@ -244,7 +244,7 @@ export default function FindTravelBuddy() {
         {isMobileMenuOpen && (
           <div className="mobile-menu-overlay">
             <div className="mobile-menu-content">
-              <button 
+              <button
                 className="mobile-nav-item"
                 onClick={() => {
                   setUserType("companion");
@@ -254,7 +254,7 @@ export default function FindTravelBuddy() {
               >
                 I'm a Companion
               </button>
-              <button 
+              <button
                 className="mobile-nav-item"
                 onClick={() => {
                   setUserType("looking");
@@ -309,7 +309,7 @@ export default function FindTravelBuddy() {
                 />
                 <div className="animation-overlay" />
               </div>
-              
+
               <div className="option-content">
                 <p className="option-text">
                   Offer your companionship services and help travelers on their journeys
@@ -339,7 +339,7 @@ export default function FindTravelBuddy() {
                 />
                 <div className="animation-overlay" />
               </div>
-              
+
               <div className="option-content">
                 <p className="option-text">
                   Find verified companions to join you on your travel adventures
@@ -568,7 +568,7 @@ export default function FindTravelBuddy() {
                       <CheckCircle className="title-icon" />
                       What I Can Offer
                     </h3>
-                    
+
                     <div className="checkbox-group">
                       <label className="checkbox-label">
                         <input
@@ -787,37 +787,37 @@ export default function FindTravelBuddy() {
                       key={idx}
                       className={`message ${msg.sender === 'user' ? 'user-message' : 'companion-message'}`}
                     >
-                      <div className="message-bubble">
-                        <p className="message-text">{msg.text}</p>
-                        <span className="message-time">{msg.time}</span>
-                      </div>
-                    </div>
+                  <div className="message-bubble">
+                    <p className="message-text">{msg.text}</p>
+                    <span className="message-time">{msg.time}</span>
+                  </div>
+                </div>
                   ))}
-                </div>
-
-                <div className="chat-input-area">
-                  <input
-                    type="text"
-                    value={currentMessage}
-                    onChange={(e) => setCurrentMessage(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                    placeholder="Type your message..."
-                    className="chat-input"
-                  />
-                  <button
-                    onClick={handleSendMessage}
-                    className="send-button"
-                  >
-                    <Send className="button-icon" />
-                  </button>
-                </div>
               </div>
-            </motion.div>
-          </div>
-        </section>
 
-        <Footer />
+              <div className="chat-input-area">
+                <input
+                  type="text"
+                  value={currentMessage}
+                  onChange={(e) => setCurrentMessage(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                  placeholder="Type your message..."
+                  className="chat-input"
+                />
+                <button
+                  onClick={handleSendMessage}
+                  className="send-button"
+                >
+                  <Send className="button-icon" />
+                </button>
+              </div>
+          </div>
+        </motion.div>
       </div>
+        </section >
+
+      <Footer />
+      </div >
     );
   }
 

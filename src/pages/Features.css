@@ -1,93 +1,163 @@
-/* Container background */
-.features-page {
-  background: linear-gradient(135deg, #2b003f, #120020, #000);
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
+/* -------- SECTION BASE -------- */
+.features-section {
+  background: linear-gradient(135deg, #12002b, #0a0014);
+  color: #fff;
+  padding: 6rem 1.5rem;
+  font-family: "Inter", sans-serif;
   overflow-x: hidden;
 }
 
-.features-section {
-  padding: 0 !important;
-  margin: 0 !important;
-  border: 0;
-  position: relative;
+/* -------- HEADER -------- */
+.features-header {
+  text-align: center;
+  margin-bottom: 4rem;
 }
 
-/* Reset all child elements */
-.features-section > * {
-  margin: 0;
-  padding: 0;
+.features-header h2 {
+  font-size: 2.5rem;
+  color: #d4b3ff;
+  margin-bottom: 1rem;
 }
-/* Main card */
-.features-card {
-  max-width: 36rem;
+
+.features-header p {
+  color: #c7b5e5;
+  max-width: 650px;
   margin: 0 auto;
-  padding: 3rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(180, 0, 255, 0.3);
-  border-radius: 2rem;
-  box-shadow: 0 0 40px rgba(180, 0, 255, 0.3);
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
-/* Title */
-.features-title {
-  font-size: 3rem;
-  font-weight: 800;
-  background: linear-gradient(to right, #9f7aea, #ed64a6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1.5rem;
-}
-
-/* Description */
-.features-desc {
-  font-size: 1.125rem;
-  color: #d1d5db;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-/* Buttons container */
-.features-buttons {
+/* -------- FEATURE ROWS -------- */
+.feature-row {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  margin-bottom: 5rem;
   flex-wrap: wrap;
-  gap: 1rem;
+}
+
+.feature-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* -------- TEXT BOX (GLOWING CARD) -------- */
+.feature-text-box {
+  flex: 1;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: rgba(180, 136, 255, 0.08);
+  border: 1px solid rgba(180, 136, 255, 0.4);
+  box-shadow: 0 0 25px rgba(180, 136, 255, 0.25);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.feature-text-box:hover {
+  box-shadow: 0 0 45px rgba(180, 136, 255, 0.45);
+  transform: translateY(-5px);
+}
+
+.feature-text-box h3 {
+  color: #d4b3ff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.feature-text-box p {
+  color: #c8b8e8;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* -------- ANIMATIONS -------- */
+.feature-animation {
+  flex: 1;
+  display: flex;
   justify-content: center;
 }
 
-/* Primary Button */
-.btn-primary {
+.feature-animation lottie-player,
+.feature-animation > div {
+  width: 300px;
+  max-width: 100%;
+}
+
+/* -------- FOOTER -------- */
+.features-footer {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.features-footer a {
   display: inline-block;
-  padding: 0.75rem 2rem;
-  background: linear-gradient(to right, #9f7aea, #ed64a6);
-  color: white;
+  background: #b892ff;
+  color: #12002b;
   font-weight: 600;
-  border-radius: 1rem;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  transition: 0.3s ease;
   text-decoration: none;
-  box-shadow: 0 0 20px rgba(180, 0, 255, 0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.btn-primary:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(180, 0, 255, 0.8);
+.features-footer a:hover {
+  background: #d4b3ff;
 }
 
-/* Secondary Button */
-.btn-secondary {
-  padding: 0.75rem 2rem;
-  border: 1px solid #9f7aea;
-  color: #c084fc;
-  font-weight: 600;
-  border-radius: 1rem;
-  background: transparent;
-  transition: transform 0.3s ease, background 0.3s ease;
+/* -------- RESPONSIVENESS -------- */
+@media (max-width: 1024px) {
+  .features-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .feature-text-box h3 {
+    font-size: 1.6rem;
+  }
+
+  .feature-row {
+    gap: 2rem;
+  }
 }
 
-.btn-secondary:hover {
-  background: rgba(159, 122, 234, 0.2);
-  transform: scale(1.05);
+@media (max-width: 768px) {
+  .feature-row,
+  .feature-row.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .feature-text-box {
+    margin-top: 1rem;
+  }
+
+  .feature-text-box h3 {
+    text-align: center;
+  }
+
+  .feature-text-box p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .features-section {
+    padding: 4rem 1rem;
+  }
+
+  .features-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .feature-text-box {
+    padding: 1.5rem;
+  }
+
+  .feature-text-box h3 {
+    font-size: 1.4rem;
+  }
+
+  .feature-text-box p {
+    font-size: 1rem;
+  }
 }

@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-/* Optional floating glow particles */
+/* Optional floating glow particles (animation removed) */
 .works-section::before {
   content: '';
   position: absolute;
@@ -18,13 +18,7 @@
   height: 200%;
   background: radial-gradient(circle at 30% 30%, rgba(179, 136, 255, 0.1), transparent 40%),
               radial-gradient(circle at 70% 70%, rgba(179, 136, 255, 0.1), transparent 40%);
-  animation: rotate 60s linear infinite;
   z-index: 0;
-}
-
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 /* Heading */
@@ -37,7 +31,6 @@
   letter-spacing: 2px;
   z-index: 1;
   position: relative;
-  text-shadow: 0 0 15px #b388ff, 0 0 25px #d0aaff;
 }
 
 /* Layout */
@@ -89,20 +82,9 @@
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(179, 136, 255, 0.1);
   transition: all 0.5s ease;
-  animation: floatWave 4s ease-in-out infinite alternate;
 }
 
-.work-step:nth-child(1) { animation-delay: 0s; }
-.work-step:nth-child(2) { animation-delay: 0.3s; }
-.work-step:nth-child(3) { animation-delay: 0.6s; }
-.work-step:nth-child(4) { animation-delay: 0.9s; }
-
-@keyframes floatWave {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
-}
-
+/* Remove floatWave animation */
 .work-step:hover {
   background: rgba(179, 136, 255, 0.15);
   transform: translateY(-15px) scale(1.02);

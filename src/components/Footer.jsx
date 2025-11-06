@@ -10,7 +10,7 @@ function Footer() {
         <h2>Ready to Travel with Peace of Mind?</h2>
         <p>Your trusted partner for seamless travel and luggage connections worldwide.</p>
         <button className="download-btn">
-          <FaGooglePlay className="icon" /> Download on Play Store
+          <FaGooglePlay className="icon" />📱 Download on Play Store
         </button>
       </div>
 
